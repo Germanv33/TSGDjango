@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <title>ТСЖ ПРИБРЕЖНЫЙ</title>
+    
+      
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+      body {
+          font-family: 'Open Sans', sans-serif;;
+        }
+
+
+              @keyframes move_wave {
+          0% {
+              transform: translateX(0) translateZ(0) scaleY(1)
+          }
+          50% {
+              transform: translateX(-25%) translateZ(0) scaleY(0.55)
+          }
+          100% {
+              transform: translateX(-50%) translateZ(0) scaleY(1)
+          }
+      }
+      .waveWrapper {
+          overflow: hidden;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          margin: auto;
+      }
+      .waveWrapperInner {
+          position: absolute;
+          width: 100%;
+          overflow: hidden;
+          height: 100%;
+          bottom: -1px;
+          background-image: linear-gradient(to top, #171e3b 20%, #7ea4f7 80%);
+      }
+      .bgTop {
+          z-index: 15;
+          opacity: 0.5;
+      }
+      .bgMiddle {
+          z-index: 10;
+          opacity: 0.75;
+      }
+      .bgBottom {
+          z-index: 5;
+      }
+      .wave {
+          position: absolute;
+          left: 0;
+          width: 200%;
+          height: 100%;
+          background-repeat: repeat no-repeat;
+          background-position: 0 bottom;
+          transform-origin: center bottom;
+      }
+      .waveTop {
+          background-size: 50% 100px;
+      }
+      .waveAnimation .waveTop {
+        animation: move-wave 3s;
+        -webkit-animation: move-wave 3s;
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s;
+      }
+      .waveMiddle {
+          background-size: 50% 120px;
+      }
+      .waveAnimation .waveMiddle {
+          animation: move_wave 10s linear infinite;
+      }
+      .waveBottom {
+          background-size: 50% 100px;
+      }
+      .waveAnimation .waveBottom {
+          animation: move_wave 15s linear infinite;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 8;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .modal-content {
+        margin: 50px auto;
+        border: 1px solid #999;
+        width: 60%;
+      }
+
+      .special_span {
+        color: #666;
+        display: block;
+        padding: 0 0 5px;
+      }
+      .special_form {
+        padding: 25px;
+        margin: 25px;
+        box-shadow: 0 2px 5px #f5f5f5;
+        background: #eee;
+      }
+      .special_input,
+      .special_textarea {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #1c87c9;
+        outline: none;
+      }
+      .contact-form .special_button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #1c87c9;
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+      }
+      .special_button:hover {
+        background: #2371a0;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .special_button.button {
+        background: none;
+        border-top: none;
+        outline: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: #02274a 1px solid;
+        padding: 0 0 3px 0;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .special_button.button:hover {
+        border-bottom: #a99567 1px solid;
+        color: #a99567;
+      }     
+    </style>
+  </head>
+  <body>
+      
+
+
+
+
+
+
+    
+
+    <div class="waveWrapper waveAnimation" style="z-index: -3;">
+      <div class="waveWrapperInner bgTop">
+        <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+      </div>
+      <div class="waveWrapperInner bgMiddle">
+        <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+      </div>
+      <div class="waveWrapperInner bgBottom">
+        <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+      </div>
+    </div>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+  
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          {% url 'home' as url_home %}
+          <a class="navbar-brand " href="{{url_home}}">Прибрежный</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              {% url 'home' as url_home %}
+              <li class="nav-item">
+                <a class="nav-link {% if url_home == request.path %}active{% endif %}" href="{{url_home}}">Главная </a>
+              </li>
+              {% url 'news' as url_news %}
+              <li class="nav-item">
+                <a class="nav-link {% if url_news == request.path %}active{% endif %}" href="{{url_news}}">Новости</a>
+              </li>
+              {% url 'docs' as url_docs %}
+              <li class="nav-item">
+                <a class="nav-link {% if url_docs == request.path %}active{% endif %}" href="{{url_docs}}">Документы</a>
+              </li>
+        
+
+
+          </ul>
+
+          {% if request.user.is_authenticated %}
+
+          {% url 'profile' as url_profile_page %}
+          <a class="nav-link my-2 my-sm-0" href="{{url_profile_page}}">Личный Кабинет</a>
+
+          {% else %}
+
+            <ul class="nav nav-pills">
+
+                <li class="nav-item">
+                {% url 'login_page' as url_login_page %}
+                <a class="nav-link my-2 my-lg-0 {% if url_login_page == request.path %} active {% endif %}" href="{{url_login_page}}">Авторизация</a>
+              </li>
+
+              <li class="nav-item"></li>
+                {% url 'register_page' as url_register_page %} 
+                <a class="nav-link my-2 my-sm-0 {% if url_register_page == request.path %} active {% endif %}" href="{{url_register_page}}">Регистрация</a>
+              </li>
+          </ul>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+   
+
+    <div class="container ">
+
+
+
+
+
+
+
+
+
+                
+      {% block content %}
+      <div class="main_tittle display-1">
+        <h1 class="simply__title" style=" 
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        font-weight: 300;
+        font-size: 50px;
+
+         "> ТСЖ ПРИБРЕЖНЫЙ </h1>
+      </div>
+
+
+
+
+
+        <div class="container mt-0 mb-5 p-3"  style="position: relative;">
+
+          <div style="display: flex; justify-content: space-around; align-items: flex-start; z-index: 3;">
+
+            <div class = "left_container" style=" width: 50%;"> 
+              <img src="https://i.archi.ru/i/218784.jpg" class="img-fluid" style="z-index: 12;" alt="Responsive image">
+            </div>
+
+            <div class="right_container " style="width: 30%; margin-top: 40px; margin-left: 10px;">
+              <h2 class="mb-3 " style="font-weight: 400; font-size: 45px; color: aliceblue;">Добро</h2>
+              <h2 class="ml-5 mb-5"  style="font-weight: 400; font-size: 45px; color: aliceblue">Пожаловать</h2>
+
+              
+              
+                {% if request.user.is_authenticated %}
+
+              {% url 'profile' as url_profile_page %}
+            
+              <form action="{{url_profile_page}}">
+                <button type="submit" class="btn btn-outline-primary" style="color: 171e3b;" >Личный Кабинет</button>
+              </form>
+
+              {% else %}
+
+              {% url 'login_page' as url_login_page %}
+
+              <form action="{{url_login_page}}">
+                <button type="submit" class="btn btn-outline-primary" style="color: #fff;">Авторизация</button>
+              </form>
+              {% endif %}
+            </div>
+
+          </div>
+
+          <div class="" style="z-index: 0; position: absolute; top: 210px; left: 540px;">
+            <p style="z-index: -1;"></p>
+          </div>
+
+         </div>
+
+
+
+
+
+
+
+
+
+         <div>
+          <H2 style=" 
+          text-align: center;
+          margin-top: 60px;
+          margin-bottom: 80px;
+          font-weight: 300;
+          font-size: 50px;
+  
+           ">Последние Новости</H2>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {% if list_count >= 3 %}
+
+          {% for i in list_articles %}
+          
+          <ul class="list-group mt-4">
+          
+          
+          <li class="list-group-item">
+              <b style="font-weight: 400; ">{{i.create_date}}</b>
+          <span class="m-2">{{i.name}}</span>
+          <span>{{i.text|truncatechars:"5"}}</span>
+
+          {% if request.user.is_authenticated %}
+
+          <span class="float-right mr-3"><a href="/detail/{{i.id}}">перейти к статье</a></span>
+
+          {% else %}
+          {% url 'login_page' as url_login_page %}
+          <span class="float-right mr-3"><a href="{{url_login_page}}">перейти к статье</a></span>
+
+          {% endif %}
+          </li>
+          
+          </ul>
+
+          {% endfor %}
+      
+      {% else %}
+      
+          {% for i in list_articles %}
+              
+          <ul class="list-group mt-4">
+          
+          
+          <li class="list-group-item">
+              <b style="font-weight: 400;">{{i.create_date}}</b>
+          <span class="m-2">{{i.name}}</span>
+          <span>{{i.text|truncatechars:"5"}}</span>
+          {% if request.user.is_authenticated %}
+
+          <span class="float-right mr-3"><a href="/detail/{{i.id}}">перейти к статье</a></span>
+
+          {% else %}
+          {% url 'login_page' as url_login_page %}
+          <span class="float-right mr-3"><a href="{{url_login_page}}">перейти к статье</a></span>
+
+          {% endif %}
+          </li>
+          
+          </ul>
+
+          {% endfor %}
+      
+      {% endif %}
+
+      <div style="margin-top: 50px;"></div>
+      {% endblock %}
+      </div>
+
+          <!-- Optional JavaScript -->
+          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+          <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+          
+          
+      {% block js %}
+      
+      {% endblock %}
+  </div>
+  </body>
+</html>
+

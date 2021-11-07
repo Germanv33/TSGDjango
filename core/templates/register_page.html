@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+    
+    {% block content %}
+    <h1 class="mt-4" style=" 
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-size: 50px;
+
+     ">Регистрация</h1>
+    
+<div class="mb-5" style="">
+    
+    <div style="display: flex; align-items: center; justify-content: space-around;">
+        
+            <form id="add_form" method="post" >
+                {% csrf_token %}
+                
+
+<div class="pr-5 pl-5 pt-2 shadow rounded pb-5" style="background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 100%);">
+
+            <form id="add_form" method="post">
+                
+                <label for="id_username">Имя пользователя:</label><input type="text" name="username" maxlength="150" autofocus="" class="form-control mb-1" required="" id="id_username"><span class="helptext" style="opacity:0.6;">Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_.</span><br>
+<label for="id_first_name">Имя:</label><input type="text" name="first_name" maxlength="30" class="form-control mb-2" id="id_first_name">
+<label for="id_last_name">Фамилия:</label><input type="text" name="last_name" maxlength="150" class="form-control mb-2" id="id_last_name">
+<label for="id_kvartira">Квартира:</label><input type="number" name="kvartira" class="form-control mb-2" required="" id="id_kvartira">
+<label for="id_email">Email:</label><input type="email" name="email" class="form-control mb-2" required="" id="id_email">
+<label for="id_password1">Пароль:</label><input type="password" name="password1" autocomplete="new-password" class="form-control" required="" id="id_password1" aria-autocomplete="list"> 
+<br>
+<span class="helptext" style="opacity: 0.2" ><ul><li style="opacity: 0.4">Ваш пароль не может быть персональной информацией</li><li style="opacity: 0.4">Ваш пароль должен содержать как минимум 8 символов.</li><li style="opacity: 0.4">Ваш пароль не должен состоять только из цифр</li></ul></span>
+
+<label for="id_password2">Подтверждение пароля:</label><input type="password" name="password2" autocomplete="new-password" class="form-control mb-1" required="" id="id_password2"><span class="helptext" style="opacity:0.6;">Для подтверждения введите, пожалуйста, пароль ещё раз.</span>
+                <br>
+                <button form="add_form" type="submit" class="btn btn-primary mt-4">Регистрация</button>
+            </form>
+        </div>
+
+            </form>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="mt-5 mb-5">
+
+</div
+
+
+{% endblock %}

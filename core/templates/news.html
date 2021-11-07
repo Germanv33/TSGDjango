@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+    
+    {% block content %}
+    <div class="main_tittle display-1">
+        <h1 class="simply__title" style=" 
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        font-weight: 300;
+        font-size: 50px;"> Новости ТСЖ Прибрежный </h1>
+      </div>
+
+
+        <form  method="GET", action="{% url 'news' %}">
+            
+        <div class="input-group">
+            <input name = "searched" type="text" class="form-control" placeholder="Искать" aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+            <button class="btn btn-success" type="submit">Найти</button>
+            </div>
+        </div>
+        </form>
+
+
+
+
+
+          {% for i in list_articles %}
+          
+          <ul class="list-group mt-4">
+          
+          
+          <li class="list-group-item">
+              <b style="font-weight: 400; ">{{i.create_date}}</b>
+          <span class="m-2">{{i.name}}</span>
+          <span>{{i.text|truncatechars:"5"}}</span>
+
+          {% if request.user.is_authenticated %}
+
+          <span class="float-right mr-3"><a href="/detail/{{i.id}}">перейти к статье</a></span>
+
+          {% else %}
+          {% url 'login_page' as url_login_page %}
+          <span class="float-right mr-3"><a href="{{url_login_page}}">перейти к статье</a></span>
+
+          {% endif %}
+          </li>
+          
+          </ul>
+
+          {% endfor %}
+
+
+
+        
+
+
+
+          
+        <div class="pagination mt-4" >
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a style="color: #fff;" href="?page=1">&laquo; 1</a>
+                    <a style="color: #fff;" href="?page={{ page_obj.previous_page_number }}">&nbsp;назад</a>
+                {% endif %}
+
+                <span class="current" style="color: cyan;">
+                    {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a style="color: #fff;" href="?page={{ page_obj.next_page_number }}">дальше&nbsp; </a>
+                    <a style="color: #fff;" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }} &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+
+
+
+
+
+
+      
+  
+
+      <div style="margin-top: 50px;"></div>
+{% endblock %}

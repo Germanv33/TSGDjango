@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+    
+    {% block content %}
+    <h1 class="mt-4 mb-4" style=" 
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-size: 50px;
+
+     ">Документ: {{get_docs.name}}</h1>
+
+
+    <p>Дата:  {{get_docs.create_date}}</p>
+    <p>Название:  {{get_docs.name}}</p>
+    <p><a style="color: cyan;" href = "{{get_docs.file}}">Посмотреть файл</a></p>
+    <p style="color: #fff;"> {{get_docs.text}}</p>
+    
+    
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+    $('body').on('click', '.update_status', function(event){
+        event.preventDefault();
+        if (confirm('Вы уверены')) {
+            var url = $(this).attr('data-url')
+            var tag_li = $(this).parent()
+            console.log(url)
+            
+            $.ajax({
+                url:url,
+                type: 'GET',
+                success: function(response) {
+                    tag_li.html(response)
+                    console.log(response)
+                }
+            })
+            
+        }
+
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

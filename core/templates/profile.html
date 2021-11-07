@@ -1,0 +1,158 @@
+{% extends 'index.html' %}
+    
+ 
+
+    {% block content %}
+
+    <div class="kv_background">
+        <div class="main_tittle display-1">
+            <h1 class="simply__title" style=" 
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 80px;
+            font-weight: 300;
+            font-size: 50px;
+            "> Квартира: {{user.kvartira}} </h1>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div style="display:flex; display: flex; justify-content: space-around; align-items: flex-start; z-index: 3; ">
+
+            <div class="left_buttons d-flex flex-column" style = "weight: 50%">
+            
+
+            
+            <button type="button" data-modal="modalOne"  class="button btn btn-light mb-3">Отправить показания счетчиков </button>
+            
+            
+
+            <button type="button" data-modal="modalTwo" class="button btn btn-light mb-3"> Письмо руководству</button>
+
+
+            <button type="button" class="btn btn-light mb-3">Изменить свои данные</button>
+
+
+            {% if request.user.is_authenticated %}
+
+
+
+            {% url 'logout_page' as url_logout_page %}
+            <form method="get" action="{{url_logout_page}}">
+                <button type="submit" class="btn btn-dark">Выйти</button>
+            </form>
+            {% endif %}
+
+
+            
+            </div>
+
+            <div class = "ml-5" style="right_info">
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div id="modalOne" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <a class="close">&times;</a>
+          <form action="/">
+            <h2>Contact Us</h2>
+            <div>
+              <input class="fname" type="text" name="name" placeholder="Full name">
+              <input type="text" name="name" placeholder="Email">
+              <input type="text" name="name" placeholder="Phone number">
+              <input type="text" name="name" placeholder="Website">
+            </div>
+            <span>Message</span>
+            <div>
+              <textarea rows="4"></textarea>
+            </div>
+            <button type="submit" href="/">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="modalTwo" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <span class="close">&times;</span>
+          <form action="/">
+            <h2>Complaint form</h2>
+            <div>
+              <input class="fname" type="text" name="name" placeholder="Full name">
+              <input type="text" name="name" placeholder="Email">
+              <input type="text" name="name" placeholder="Phone number">
+              <input type="text" name="name" placeholder="Website">
+            </div>
+            <span>Message</span>
+            <div>
+              <textarea rows="4"></textarea>
+            </div>
+            <button type="submit" href="/">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div style="margin-top: 50px;"></div>
+{% endblock %}
+
+
+{% block js %}
+      
+    <script>
+      let modalBtns = [...document.querySelectorAll(".button")];
+      modalBtns.forEach(function(btn) {
+        btn.onclick = function() {
+          let modal = btn.getAttribute('data-modal');
+          document.getElementById(modal)
+            .style.display = "block";
+        }
+      });
+      let closeBtns = [...document.querySelectorAll(".close")];
+      closeBtns.forEach(function(btn) {
+        btn.onclick = function() {
+          let modal = btn.closest('.modal');
+          modal.style.display = "none";
+        }
+      });
+      window.onclick = function(event) {
+        if(event.target.className === "modal") {
+          event.target.style.display = "none";
+        }
+      }
+    </script>
+
+
+{% endblock %}

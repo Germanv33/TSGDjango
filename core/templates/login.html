@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+    
+    {% block content %}
+    <h1 class="mt-4 mb-5" style=" 
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-size: 50px;
+
+     ">Авторизация</h1>
+    
+
+<div  style="position:relative; width:50%; margin: auto; height: 600px">
+<form id="add_form" method="post" class="p" style="">
+
+            {% csrf_token %}
+            {{form}}
+            <br>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="remember_me" class="custom-control-input" id="customSwitch1">
+                
+                <label class="custom-control-label"  for="customSwitch1">Запомнить меня</label>
+            </div>
+
+            <button form="add_form" type="submit" class="btn btn-primary mt-4">Войти</button>
+</form>
+</div>
+
+{% endblock %}
