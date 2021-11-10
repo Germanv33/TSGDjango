@@ -37,10 +37,16 @@ def ProfileView(request):
 
     current_user = request.user
 
+    if WaterKeep.objects.get(user=current_user):
+        water_keeper = WaterKeep.objects.get(user=current_user)
+        s_count = water_keeper.pair_count
+    else:
+        s_count = 1
+    
     context = {
         "kvartira": current_user.kvartira,
-        "name": current_user.last_name
-
+        "name": current_user.last_name,
+        "s_count": s_count
     }
 
     return render(request, "profile.html", context)
