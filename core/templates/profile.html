@@ -1,106 +1,357 @@
-{% extends 'index.html' %}
-    
- 
+{% extends 'index.html' %} {% block content %}
 
-    {% block content %}
-
-    <div class="kv_background">
-        <div class="main_tittle display-1">
-            <h1 class="simply__title" style=" 
+<div class="kv_background">
+    <div class="main_tittle display-1">
+        <h1 class="simply__title" style=" 
             text-align: center;
             margin-top: 60px;
             margin-bottom: 80px;
             font-weight: 300;
             font-size: 50px;
             "> Квартира: {{user.kvartira}} </h1>
-        </div>
     </div>
+</div>
 
 
 
-    <div class="container">
-        <div style="display:flex; display: flex; justify-content: space-around; align-items: flex-start; z-index: 3; ">
+<div class="container">
+    <div style="display:flex; display: flex; justify-content: space-around; align-items: flex-start; z-index: 3; ">
 
-            <div class="left_buttons d-flex flex-column" style = "weight: 50%">
-            
+        <div class="left_buttons d-flex flex-column" style="width: 50%">
 
-            
-            <button type="button" data-modal="modalOne"  class="button btn btn-light mb-3">Отправить показания счетчиков </button>
-            
-            
+
+
+            <button type="button" data-modal="modalOne" class="button btn btn-light mb-3">Отправить показания счетчиков </button>
+
+
 
             <button type="button" data-modal="modalTwo" class="button btn btn-light mb-3"> Письмо руководству</button>
 
-
-            <button type="button" class="btn btn-light mb-3">Изменить свои данные</button>
-
-
-            {% if request.user.is_authenticated %}
+            <button type="button" data-modal="modalThree" class="button btn btn-light mb-3"> Обновить информацию о счетчиках</button>
 
 
-
-            {% url 'logout_page' as url_logout_page %}
+            <button type="button" class="btn btn-light mb-3">Изменить свои данные</button> {% if request.user.is_authenticated %} {% url 'logout_page' as url_logout_page %}
             <form method="get" action="{{url_logout_page}}">
                 <button type="submit" class="btn btn-dark">Выйти</button>
             </form>
             {% endif %}
 
 
-            
-            </div>
-
-            <div class = "ml-5" style="right_info">
-
-            </div>
 
         </div>
+
+        <div class="ml-5">
+
+        </div>
+
     </div>
+</div>
 
 
 
 
-    <div id="modalOne" class="modal">
-      <div class="modal-content">
+<!-- Показания счетчиков -->
+<div id="modalOne" class="modal">
+    <div class="modal-content">
+        <div class="pr-5 pl-5 pt-2 shadow rounded pb-5" style="background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 100%);">
+            <div class="contact-form">
+                <a class="close">&times;</a>
+
+                <form action="/" , method="post">
+                    {% csrf_token %}
+                    <h2 class="h2">Contact Us</h2>
+                    <div>
+
+                        <input type="hidden" name="water" value="">
+                        <input type="hidden" name="name" value="{{user.kvartira}}">
+
+                        <div class="form-group">
+                            <label for="id_hot_water">Показания горячей воды</label><input type="number" name="hot_water" class="form-control mb-2" id="id_hot_water">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_cold_water">Показания холодной воды</label><input type="number" name="cold_water" class="form-control mb-2" id="id_cold_water">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input type="date" name="w_date" class="form-control mb-2" id="id_w_date">
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit" href="/" class="btn btn-success">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Письмо -->
+<div id="modalTwo" class="modal">
+    <div class="modal-content">
         <div class="contact-form">
-          <a class="close">&times;</a>
-          <form action="/">
-            <h2>Contact Us</h2>
-            <div>
-              <input class="fname" type="text" name="name" placeholder="Full name">
-              <input type="text" name="name" placeholder="Email">
-              <input type="text" name="name" placeholder="Phone number">
-              <input type="text" name="name" placeholder="Website">
+            <span class="close">&times;</span>
+            <div class="pr-5 pl-5 pt-2 shadow rounded pb-5" style="background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 100%);">
+                <form action="/" , method="post">
+                    {% csrf_token %}
+                    <h2>Письмо руководству</h2>
+                    <div>
+
+                        <input type="hidden" name="letter" value="">
+                        <input type="hidden" name="kvartira" value="{{user.kvartira}}">
+
+
+                        <label for="id_l_email"> Email</label>
+                        <input id="id_l_email" class="form-control mb-2" type="text" name="l_email" placeholder="Email">
+
+                        <label for="id_l_textarea"> Сообщение </label>
+                        <textarea class="form-control mb-2" id="id_l_textarea" rows="2" name="l_textarea"></textarea>
+
+
+
+
+                    </div>
+
+                    <button class="btn btn-success mt-3" type="submit">Отправить</button>
+                </form>
             </div>
-            <span>Message</span>
-            <div>
-              <textarea rows="4"></textarea>
-            </div>
-            <button type="submit" href="/">Submit</button>
-          </form>
         </div>
-      </div>
     </div>
-    <div id="modalTwo" class="modal">
-      <div class="modal-content">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Обновление номера счетчика -->
+<div id="modalThree" class="modal">
+    <div class="modal-content">
         <div class="contact-form">
-          <span class="close">&times;</span>
-          <form action="/">
-            <h2>Complaint form</h2>
-            <div>
-              <input class="fname" type="text" name="name" placeholder="Full name">
-              <input type="text" name="name" placeholder="Email">
-              <input type="text" name="name" placeholder="Phone number">
-              <input type="text" name="name" placeholder="Website">
+            <span class="close">&times;</span>
+            <div class="pr-5 pl-5 pt-2 shadow rounded pb-5" style="background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 100%);">
+                <form action="/" , method="post">
+                    {% csrf_token %}
+                    <h2>Обновление данных о счетчиках</h2>
+
+                    <select id="select_type" class="custom-select mt-3">
+                        <option value = "0">Выберите Количество счетчиков</option>
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                        <option value = "4">4</option>
+                        <option value = "5">5</option>
+                    </select>
+                    <div id="0form">
+                        <form name="A0" id="0" method="post" class="formi">
+                        </form>
+                    </div>
+
+                    <div id="1form">
+                        <form name="A1" id="1" method="post" class="formi mt-3" style="display: none;">
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number">Номер счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number">Номер счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div id="2form">
+                        <form name="A2" id="2" method="post" class="formi mt-3" style="display: none;">
+                            <div class="form-group">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                    <div id="3form">
+                        <form name="A3" id="3" method="post" class="formi mt-3" style="display: none;">
+                            <div class="form-group">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number3">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number3">
+
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                    <div id="4form">
+                        <form name="A4" id="4" method="post" class="formi mt-3" style="display: none;">
+                            <div class="form-group">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number3">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number3">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number4">Номер 4 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number4">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number4">Номер 4 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number4">
+
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div id="5form">
+                        <form name="A5" id="5" method="post" class="formi mt-3" style="display: none;">
+                            <div class="form-group">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number3">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number3">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number4">Номер 4 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number4">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number4">Номер 4 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number4">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_hot_water_number5">Номер 5 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number5">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_cold_water_number5">Номер 5 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number5">
+
+                            </div>
+
+
+
+                        </form>
+                    </div>
+
+                    <button class="btn btn-success mt-3" type="submit">Отправить</button>
+                </form>
             </div>
-            <span>Message</span>
-            <div>
-              <textarea rows="4"></textarea>
-            </div>
-            <button type="submit" href="/">Submit</button>
-          </form>
         </div>
-      </div>
     </div>
+</div>
 
 
 
@@ -121,38 +372,43 @@
 
 
 
+<div style="margin-top: 50px; "></div>
+{% endblock %} {% block js %}
+
+<script>
+    document.getElementById('select_type').onclick = function() {
+
+        document.querySelectorAll('.formi').forEach(function(e) {
+            e.style.display = 'none';
+        });
+
+        document.getElementById(this.value).style.display = 'block';
+    }
 
 
 
 
-      <div style="margin-top: 50px;"></div>
-{% endblock %}
-
-
-{% block js %}
-      
-    <script>
-      let modalBtns = [...document.querySelectorAll(".button")];
-      modalBtns.forEach(function(btn) {
+    let modalBtns = [...document.querySelectorAll(".button")];
+    modalBtns.forEach(function(btn) {
         btn.onclick = function() {
-          let modal = btn.getAttribute('data-modal');
-          document.getElementById(modal)
-            .style.display = "block";
+            let modal = btn.getAttribute('data-modal');
+            document.getElementById(modal)
+                .style.display = "block";
         }
-      });
-      let closeBtns = [...document.querySelectorAll(".close")];
-      closeBtns.forEach(function(btn) {
+    });
+    let closeBtns = [...document.querySelectorAll(".close")];
+    closeBtns.forEach(function(btn) {
         btn.onclick = function() {
-          let modal = btn.closest('.modal');
-          modal.style.display = "none";
+            let modal = btn.closest('.modal');
+            modal.style.display = "none";
         }
-      });
-      window.onclick = function(event) {
-        if(event.target.className === "modal") {
-          event.target.style.display = "none";
+    });
+    window.onclick = function(event) {
+        if (event.target.className === "modal") {
+            event.target.style.display = "none";
         }
-      }
-    </script>
+    }
+</script>
 
 
 {% endblock %}

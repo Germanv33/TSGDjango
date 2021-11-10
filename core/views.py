@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 
-from .models import Articles,Comments, Documents, User
+from .models import Articles,Comments, Documents, User, Letter, Water, WaterKeep
 from django.views.generic import ListView, DetailView,CreateView, UpdateView,DeleteView
 from django.views.generic.edit import FormMixin
 from .forms import ArticleForm, AuthUserForm, RegisterUserForm, CommentForm, RegistrationForm
@@ -18,12 +18,29 @@ from django.db.models import Q
 
 @login_required
 def ProfileView(request):
-    
+    if request.method == "POST":
+        if request.POST.get("water"):
+            new_water = Water()
+
+        if request.POST.get("letter"):
+            new_letter = Letter()
+
+        if request.POST.get("letter"):
+            new_letter = Letter()
+
+        if request.POST.get("letter"):
+            new_letter = Letter()
+
+        if request.POST.get("letter"):
+            new_letter = Letter()
+
+
     current_user = request.user
 
     context = {
         "kvartira": current_user.kvartira,
         "name": current_user.last_name
+
     }
 
     return render(request, "profile.html", context)
