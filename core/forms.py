@@ -5,6 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 
 
+
+
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Articles
@@ -90,9 +92,6 @@ class RegisterUserForm(forms.ModelForm):
         return user
         
         
-        
-        
-        
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
@@ -101,17 +100,5 @@ class CommentForm(forms.ModelForm):
         super().__init__(*args,**kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
-        self.fields['text'].widget = Textarea(attrs={'rows':5})
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        self.fields['text'].widget = Textarea(attrs={'rows':2})
         

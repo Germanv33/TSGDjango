@@ -130,7 +130,7 @@ class Letter(models.Model):
     
     
     def __str__(self):
-        return self.name
+        return "Письмо от " + str(self.kvartira)
     
     class Meta:
         verbose_name='Письмо от жителя'

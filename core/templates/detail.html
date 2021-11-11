@@ -1,7 +1,5 @@
-{% extends 'index.html' %}
-    
-    {% block content %}
-    <h1 class="mt-4" style=" 
+{% extends 'index.html' %} {% block content %}
+<h1 class="mt-4" style=" 
     text-align: center;
     margin-top: 60px;
     margin-bottom: 20px;
@@ -9,92 +7,86 @@
     font-size: 50px;
 
      ">Статья: {{get_article.name}}</h1>
-    <p><a href="/">Вернуться назад</a></p>
+<p><a href="/">Вернуться назад</a></p>
 
 
-    <p>Дата:  {{get_article.create_date}}</p>
-    <p>{{get_article.name}}</p>
-    <p>{{get_article.text}}</p>
-    
-    
-    <p>Комментарии ({{get_article.comments_articles.all.count}})</p>
-    
-    
-    <hr>
-    
-    <p>Добавить комментарий</p>
-    
-    
-        {% if messages %}
-    <div class="alert alert-success">
-        {% for m in messages %}
-            {{m}}
-        {% endfor %}
-    </div>
-    
-    
-    {% endif %}
-    
-    
-    
-    
-    
-    <ul>
-    
+<p>Дата: {{get_article.create_date}}</p>
+<p>{{get_article.name}}</p>
+<p>{{get_article.text}}</p>
+
+
+<p>Комментарии ({{get_article.comments_articles.all.count}})</p>
+
+
+<hr>
+
+<p>Комментарии</p>
+
+
+{% if messages %}
+<div class="alert alert-success">
+    {% for m in messages %} {{m}} {% endfor %}
+</div>
+
+
+{% endif %}
+
+
+
+
+
+<ul>
+
     {% for item in get_article.comments_articles.all %}
-    
+
     <li>
 
-    {% include 'comment_item.html' %}
+        {% include 'comment_item.html' %}
 
     </li>
-    
+
     {% endfor %}
-    </ul>
-    
-    <div class="col-4">
-        
+</ul>
 
-        <form action="" id="add_form" method="post">
-            {% csrf_token %}
-                {{form.as_p}}
-        </form>
+<div class="col-4">
 
 
-
-        <button form="add_form" type="submit" class="btn btn-primary">Добавить</button>
-
-        
-        
-        
-
-    </div>
-    
-    
-{% endblock %}
+    <form action="" id="add_form" method="post">
+        {% csrf_token %} {{form.as_p}}
+    </form>
 
 
-{% block js %}
+
+    <button form="add_form" type="submit" class="btn btn-primary">Добавить</button>
+
+
+
+
+
+</div>
+
+
+{% endblock %} {% block js %}
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script>
-    $('body').on('click', '.update_status', function(event){
+    $('body').on('click', '.update_status', function(event) {
         event.preventDefault();
         if (confirm('Вы уверены')) {
             var url = $(this).attr('data-url')
             var tag_li = $(this).parent()
             console.log(url)
-            
+
             $.ajax({
-                url:url,
+                url: url,
                 type: 'GET',
                 success: function(response) {
                     tag_li.html(response)
                     console.log(response)
                 }
             })
-            
+
         }
 
     })

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Articles, Documents, User, Water, WaterKeep, Letter
+from core.models import Articles, Documents, User, Water, WaterKeep, Letter, Comments
 
 
 # Register your models here.
@@ -9,4 +9,5 @@ admin.site.register(User)
 admin.site.register(WaterKeep)
 admin.site.register(Water)
 admin.site.register(Letter)
+admin.site.register(Comments)
 

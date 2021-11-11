@@ -18,22 +18,6 @@ from django.db.models import Q
 
 @login_required
 def ProfileView(request):
-    if request.method == "POST":
-        if request.POST.get("water"):
-            new_water = Water()
-
-        if request.POST.get("letter"):
-            new_letter = Letter()
-
-        if request.POST.get("letter"):
-            new_letter = Letter()
-
-        if request.POST.get("letter"):
-            new_letter = Letter()
-
-        if request.POST.get("letter"):
-            new_letter = Letter()
-
 
     current_user = request.user
 
@@ -49,6 +33,69 @@ def ProfileView(request):
         "s_count": s_count
     }
 
+    if request.method == "POST":
+        if request.POST.get("l_email"):
+            l_text = str(request.POST.get("l_textarea"))
+            l_email = request.POST.get("l_email")
+            new_letter = Letter.objects.create(kvartira=current_user.kvartira, email=l_email, text=l_text)
+            return render(request, "profile.html", context)
+
+
+        if request.POST.get("hot_water_value"):
+            hot1_value = request.POST.get("hot_water_value")
+            cold1_value = request.POST.get("cold_water_value")
+            hot2_value = request.POST.get("hot_water2_value")
+            cold2_value = request.POST.get("cold_water2_value")
+            hot3_value = request.POST.get("hot_water3_value")
+            cold3_value = request.POST.get("cold_water3_value")
+            hot4_value = request.POST.get("hot_water4_value")
+            cold4_value = request.POST.get("cold_water4_value")
+            hot5_value = request.POST.get("hot_water5_value")
+            cold5_value = request.POST.get("cold_water5_value")
+            water_date = request.POST.get("w_date")
+            values = {
+                "hot1":hot1_value, "cold1":cold1_value, 
+            'hot2':hot2_value, 'cold2':cold2_value, "hot3":hot3_value, 'cold3':cold3_value,
+            'hot4':hot4_value, 'cold4':cold4_value, 'hot5':hot5_value, 'cold5':cold5_value
+            }
+            new_water = Water.objects.create(kvartira=current_user.kvartira,  hot1 = hot1_value,  cold1 = cold1_value, 
+             hot2 = hot2_value,  cold2 = cold2_value,  hot3 = hot3_value,  cold3 = cold3_value,
+             hot4 = hot4_value,  cold4 = cold4_value,  hot5 = hot5_value,  cold5 = cold5_value,
+             date=water_date)
+            
+            return render(request, "profile.html", context)
+
+
+        if request.POST.get("hot_water_number"):
+            pairs = 0
+            hot1_number = request.POST.get("hot_water_number")
+            cold1_number = request.POST.get("cold_water_number")
+            hot2_number = request.POST.get("hot_water2_number")
+            cold2_number = request.POST.get("cold_water2_number")
+            hot3_number = request.POST.get("hot_wate3r_number")
+            cold3_number = request.POST.get("cold_water3_number")
+            hot4_number = request.POST.get("hot_water4_number")
+            cold4_number = request.POST.get("cold_water4_number")
+            hot5_number = request.POST.get("hot_water5_number")
+            cold5_number = request.POST.get("cold_water5_number")
+            numbers = [hot1_number, hot2_number, hot3_number, hot4_number, hot5_number]
+
+            for number in numbers:
+                if number != None:
+                    pairs += 1
+
+            values_for_update = {
+                "user":current_user, "pair_count": pairs, "hot1":hot1_number, "cold1":cold1_number, 
+            'hot2':hot2_number, 'cold2':cold2_number, "hot3":hot3_number, 'cold3':cold3_number,
+            'hot4':hot4_number, 'cold4':cold4_number, 'hot5':hot5_number, 'cold5':cold5_number
+            }
+            
+            new_waterkepper, created = WaterKeep.objects.update_or_create(user=current_user, defaults = values_for_update)
+            return render(request, "profile.html", context)
+
+
+    else:
+        pass
     return render(request, "profile.html", context)
 
 

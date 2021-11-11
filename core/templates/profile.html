@@ -58,192 +58,190 @@ background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0
             <div class="contact-form">
                 <a class="close">&times;</a>
 
-                <form action="/" , method="post">
+                <form action="{% url 'profile' %}" , method="post">
                     {% csrf_token %}
                     <h2 class="h2">Contact Us</h2>
                     <div>
 
-                        <input type="hidden" name="water" value="">
-                        <input type="hidden" name="name" value="{{user.kvartira}}">
 
                         <!-- Валидация количества счетчиков -->
                         {% if s_count == 1 %}
                         <div class="form-group">
-                            <label for="id_hot_water">Показания горячей воды</label><input type="number" name="hot_water" class="form-control mb-2" id="id_hot_water">
+                            <label for="id_hot_water">Показания горячей воды</label><input required type="number" name="hot_water_value" class="form-control mb-2" id="id_hot_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Показания холодной воды</label><input type="number" name="cold_water" class="form-control mb-2" id="id_cold_water">
+                            <label for="id_cold_water">Показания холодной воды</label><input required type="number" name="cold_water_value" class="form-control mb-2" id="id_cold_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input type="date" name="w_date" class="form-control mb-2" id="id_w_date">
+                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input required type="date" name="w_date" class="form-control mb-2" id="id_w_date">
 
                         </div>
                         {% endif %} {% if s_count == 2 %}
                         <div class="form-group">
-                            <label for="id_hot_water">Показания горячей воды</label><input type="number" name="hot_water" class="form-control mb-2" id="id_hot_water">
+                            <label for="id_hot_water">Показания горячей воды</label><input required type="number" name="hot_water_value" class="form-control mb-2" id="id_hot_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Показания холодной воды</label><input type="number" name="cold_water" class="form-control mb-2" id="id_cold_water">
+                            <label for="id_cold_water">Показания холодной воды</label><input required type="number" name="cold_water_value" class="form-control mb-2" id="id_cold_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water2">Показания 2 горячей воды</label><input type="number" name="hot_water2" class="form-control mb-2" id="id_hot_water2">
+                            <label for="id_hot_water2">Показания 2 горячей воды</label><input required type="number" name="hot_water2_value" class="form-control mb-2" id="id_hot_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water2">Показания 2 холодной воды</label><input type="number" name="cold_water2" class="form-control mb-2" id="id_cold_water2">
+                            <label for="id_cold_water2">Показания 2 холодной воды</label><input required type="number" name="cold_water2_value" class="form-control mb-2" id="id_cold_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input type="date" name="w_date" class="form-control mb-2" id="id_w_date">
+                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input required type="date" name="w_date" class="form-control mb-2" id="id_w_date">
 
                         </div>
                         {% endif %} {% if s_count == 3 %}
                         <div class="form-group">
-                            <label for="id_hot_water">Показания горячей воды</label><input type="number" name="hot_water" class="form-control mb-2" id="id_hot_water">
+                            <label for="id_hot_water">Показания горячей воды</label><input required type="number" name="hot_water_value" class="form-control mb-2" id="id_hot_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Показания холодной воды</label><input type="number" name="cold_water" class="form-control mb-2" id="id_cold_water">
+                            <label for="id_cold_water">Показания холодной воды</label><input required type="number" name="cold_water_value" class="form-control mb-2" id="id_cold_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water2">Показания 2 горячей воды</label><input type="number" name="hot_water2" class="form-control mb-2" id="id_hot_water2">
+                            <label for="id_hot_water2">Показания 2 горячей воды</label><input required type="number" name="hot_water2_value" class="form-control mb-2" id="id_hot_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water2">Показания 2 холодной воды</label><input type="number" name="cold_water2" class="form-control mb-2" id="id_cold_water2">
+                            <label for="id_cold_water2">Показания 2 холодной воды</label><input required type="number" name="cold_water2_value" class="form-control mb-2" id="id_cold_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water3">Показания 3 горячей воды</label><input type="number" name="hot_water3" class="form-control mb-2" id="id_hot_water3">
+                            <label for="id_hot_water3">Показания 3 горячей воды</label><input required type="number" name="hot_water3_value" class="form-control mb-2" id="id_hot_water3">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water3">Показания 3 холодной воды</label><input type="number" name="cold_water3" class="form-control mb-2" id="id_cold_water3">
+                            <label for="id_cold_water3">Показания 3 холодной воды</label><input required type="number" name="cold_water3_value" class="form-control mb-2" id="id_cold_water3">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input type="date" name="w_date" class="form-control mb-2" id="id_w_date">
+                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input required type="date" name="w_date" class="form-control mb-2" id="id_w_date">
 
                         </div>
 
 
                         {% endif %} {% if s_count == 4 %}
                         <div class="form-group">
-                            <label for="id_hot_water">Показания горячей воды</label><input type="number" name="hot_water" class="form-control mb-2" id="id_hot_water">
+                            <label for="id_hot_water">Показания горячей воды</label><input required type="number" name="hot_water_value" class="form-control mb-2" id="id_hot_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Показания холодной воды</label><input type="number" name="cold_water" class="form-control mb-2" id="id_cold_water">
+                            <label for="id_cold_water">Показания холодной воды</label><input required type="number" name="cold_water_value" class="form-control mb-2" id="id_cold_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water2">Показания 2 горячей воды</label><input type="number" name="hot_water2" class="form-control mb-2" id="id_hot_water2">
+                            <label for="id_hot_water2">Показания 2 горячей воды</label><input required type="number" name="hot_water2_value" class="form-control mb-2" id="id_hot_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water2">Показания 2 холодной воды</label><input type="number" name="cold_water2" class="form-control mb-2" id="id_cold_water2">
+                            <label for="id_cold_water2">Показания 2 холодной воды</label><input required type="number" name="cold_water2_value" class="form-control mb-2" id="id_cold_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water3">Показания 3 горячей воды</label><input type="number" name="hot_water3" class="form-control mb-2" id="id_hot_water3">
+                            <label for="id_hot_water3">Показания 3 горячей воды</label><input required type="number" name="hot_water3_value" class="form-control mb-2" id="id_hot_water3">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water3">Показания 3 холодной воды</label><input type="number" name="cold_water3" class="form-control mb-2" id="id_cold_water3">
+                            <label for="id_cold_water3">Показания 3 холодной воды</label><input required type="number" name="cold_water3_value" class="form-control mb-2" id="id_cold_water3">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water4">Показания 4 горячей воды</label><input type="number" name="hot_water4" class="form-control mb-2" id="id_hot_water4">
+                            <label for="id_hot_water4">Показания 4 горячей воды</label><input required type="number" name="hot_water4_value" class="form-control mb-2" id="id_hot_water4">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water4">Показания 4 холодной воды</label><input type="number" name="cold_water4" class="form-control mb-2" id="id_cold_water4">
+                            <label for="id_cold_water4">Показания 4 холодной воды</label><input required type="number" name="cold_water4_value" class="form-control mb-2" id="id_cold_water4">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input type="date" name="w_date" class="form-control mb-2" id="id_w_date">
+                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input required type="date" name="w_date" class="form-control mb-2" id="id_w_date">
 
                         </div>
 
 
                         {% endif %} {% if s_count == 5 %}
                         <div class="form-group">
-                            <label for="id_hot_water">Показания горячей воды</label><input type="number" name="hot_water" class="form-control mb-2" id="id_hot_water">
+                            <label for="id_hot_water">Показания горячей воды</label><input required type="number" name="hot_water_value" class="form-control mb-2" id="id_hot_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Показания холодной воды</label><input type="number" name="cold_water" class="form-control mb-2" id="id_cold_water">
+                            <label for="id_cold_water">Показания холодной воды</label><input required type="number" name="cold_water_value" class="form-control mb-2" id="id_cold_water">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water2">Показания 2 горячей воды</label><input type="number" name="hot_water2" class="form-control mb-2" id="id_hot_water2">
+                            <label for="id_hot_water2">Показания 2 горячей воды</label><input required type="number" name="hot_water2_value" class="form-control mb-2" id="id_hot_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water2">Показания 2 холодной воды</label><input type="number" name="cold_water2" class="form-control mb-2" id="id_cold_water2">
+                            <label for="id_cold_water2">Показания 2 холодной воды</label><input required type="number" name="cold_water2_value" class="form-control mb-2" id="id_cold_water2">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water3">Показания 3 горячей воды</label><input type="number" name="hot_water3" class="form-control mb-2" id="id_hot_water3">
+                            <label for="id_hot_water3">Показания 3 горячей воды</label><input required type="number" name="hot_water3_value" class="form-control mb-2" id="id_hot_water3">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water3">Показания 3 холодной воды</label><input type="number" name="cold_water3" class="form-control mb-2" id="id_cold_water3">
+                            <label for="id_cold_water3">Показания 3 холодной воды</label><input required type="number" name="cold_water3_value" class="form-control mb-2" id="id_cold_water3">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water4">Показания 4 горячей воды</label><input type="number" name="hot_water4" class="form-control mb-2" id="id_hot_water4">
+                            <label for="id_hot_water4">Показания 4 горячей воды</label><input required type="number" name="hot_water4_value" class="form-control mb-2" id="id_hot_water4">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water4">Показания 4 холодной воды</label><input type="number" name="cold_water4" class="form-control mb-2" id="id_cold_water4">
+                            <label for="id_cold_water4">Показания 4 холодной воды</label><input required type="number" name="cold_water4_value" class="form-control mb-2" id="id_cold_water4">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_hot_water5">Показания 5 горячей воды</label><input type="number" name="hot_water5" class="form-control mb-2" id="id_hot_water5">
+                            <label for="id_hot_water5">Показания 5 горячей воды</label><input required type="number" name="hot_water5_value" class="form-control mb-2" id="id_hot_water5">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water5">Показания 5 холодной воды</label><input type="number" name="cold_water5" class="form-control mb-2" id="id_cold_water5">
+                            <label for="id_cold_water5">Показания 5 холодной воды</label><input required type="number" name="cold_water5_value" class="form-control mb-2" id="id_cold_water5">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input type="date" name="w_date" class="form-control mb-2" id="id_w_date">
+                            <label for="id_cold_water">Дата сдачи показаний счетчика</label><input required type="date" name="w_date" class="form-control mb-2" id="id_w_date">
 
                         </div>
 
@@ -265,23 +263,16 @@ background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0
             <span class="close">&times;</span>
             <div class="pr-5 pl-5 pt-2 shadow rounded pb-5" style="background: rgb(0,0,0);
 background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 100%);">
-                <form action="/" , method="post">
+                <form method="post" , action="{% url 'profile' %}">
                     {% csrf_token %}
                     <h2>Письмо руководству</h2>
                     <div>
 
-                        <input type="hidden" name="letter" value="">
-                        <input type="hidden" name="kvartira" value="{{user.kvartira}}">
-
-
                         <label for="id_l_email"> Email</label>
-                        <input id="id_l_email" class="form-control mb-2" type="text" name="l_email" placeholder="Email">
+                        <input pattern="\S+@[a-z]+.[a-z]+" id="id_l_email" class="form-control mb-2" type="text" name="l_email" placeholder="Email" required>
 
                         <label for="id_l_textarea"> Сообщение </label>
-                        <textarea class="form-control mb-2" id="id_l_textarea" rows="2" name="l_textarea"></textarea>
-
-
-
+                        <textarea required class="form-control mb-2" id="id_l_textarea" rows="2" name="l_textarea"></textarea>
 
                     </div>
 
@@ -292,24 +283,6 @@ background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Обновление номера счетчика -->
 <div id="modalThree" class="modal">
     <div class="modal-content">
@@ -317,11 +290,10 @@ background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0
             <span class="close">&times;</span>
             <div class="pr-5 pl-5 pt-2 shadow rounded pb-5" style="background: rgb(0,0,0);
 background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 100%);">
-                <form action="/" , method="post">
-                    {% csrf_token %}
+                <form action="/">
                     <h2>Обновление данных о счетчиках</h2>
 
-                    <select id="select_type" class="custom-select mt-3">
+                    <select id="select_type" class="custom-select mt-3" name="pair_selector">
                         <option value = "0">Выберите Количество счетчиков</option>
                         <option value = "1">1</option>
                         <option value = "2">2</option>
@@ -337,41 +309,44 @@ background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0
 
                     <div id="1form">
                         <form name="A1" id="1" method="post" class="formi mt-3" style="display: none;">
-
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="id_hot_water_number">Номер счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+                                <label for="id_hot_water_number">Номер счетчика горячей воды</label><input required type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number">Номер счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+                                <label for="id_cold_water_number">Номер счетчика холодной воды</label><input required type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
 
                             </div>
+                            <button class="btn btn-success mt-3" type="submit">Отправить</button>
                         </form>
                     </div>
 
 
                     <div id="2form">
                         <form name="A2" id="2" method="post" class="formi mt-3" style="display: none;">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input required type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input required type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input required type="number" name="hot_water2_number" class="form-control mb-2" id="id_hot_water_number2">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input required type="number" name="cold_water2_number" class="form-control mb-2" id="id_cold_water_number2">
 
                             </div>
+                            <button class="btn btn-success mt-3" type="submit">Отправить</button>
                         </form>
                     </div>
 
@@ -379,35 +354,37 @@ background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0
 
                     <div id="3form">
                         <form name="A3" id="3" method="post" class="formi mt-3" style="display: none;">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input required type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input required type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input required type="number" name="hot_water2_number" class="form-control mb-2" id="id_hot_water_number2">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input required type="number" name="cold_water2_number" class="form-control mb-2" id="id_cold_water_number2">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number3">
+                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input required type="number" name="hot_water3_number" class="form-control mb-2" id="id_hot_water_number3">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number3">
+                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input required type="number" name="cold_water3_number" class="form-control mb-2" id="id_cold_water_number3">
 
                             </div>
+                            <button class="btn btn-success mt-3" type="submit">Отправить</button>
                         </form>
                     </div>
 
@@ -415,107 +392,109 @@ background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0
 
                     <div id="4form">
                         <form name="A4" id="4" method="post" class="formi mt-3" style="display: none;">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input required type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input required type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input required type="number" name="hot_water2_number" class="form-control mb-2" id="id_hot_water_number2">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input required type="number" name="cold_water2_number" class="form-control mb-2" id="id_cold_water_number2">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number3">
+                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input required type="number" name="hot_water3_number" class="form-control mb-2" id="id_hot_water_number3">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number3">
+                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input required type="number" name="cold_water3_number" class="form-control mb-2" id="id_cold_water_number3">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number4">Номер 4 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number4">
+                                <label for="id_hot_water_number4">Номер 4 счетчика горячей воды</label><input required type="number" name="hot_water4_number" class="form-control mb-2" id="id_hot_water_number4">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number4">Номер 4 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number4">
+                                <label for="id_cold_water_number4">Номер 4 счетчика холодной воды</label><input required type="number" name="cold_water4_number" class="form-control mb-2" id="id_cold_water_number4">
 
                             </div>
-
+                            <button class="btn btn-success mt-3" type="submit">Отправить</button>
                         </form>
                     </div>
 
                     <div id="5form">
                         <form name="A5" id="5" method="post" class="formi mt-3" style="display: none;">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
+                                <label for="id_hot_water_number">Номер 1 счетчика горячей воды</label><input required type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
+                                <label for="id_cold_water_number">Номер 1 счетчика холодной воды</label><input required type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number2">
+                                <label for="id_hot_water_number2">Номер 2 счетчика горячей воды</label><input required type="number" name="hot_water2_number" class="form-control mb-2" id="id_hot_water_number2">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number2">
+                                <label for="id_cold_water_number2">Номер 2 счетчика холодной воды</label><input required type="number" name="cold_water2_number" class="form-control mb-2" id="id_cold_water_number2">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number3">
+                                <label for="id_hot_water_number3">Номер 3 счетчика горячей воды</label><input required type="number" name="hot_water3_number" class="form-control mb-2" id="id_hot_water_number3">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number3">
+                                <label for="id_cold_water_number3">Номер 3 счетчика холодной воды</label><input required type="number" name="cold_water3_number" class="form-control mb-2" id="id_cold_water_number3">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number4">Номер 4 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number4">
+                                <label for="id_hot_water_number4">Номер 4 счетчика горячей воды</label><input required type="number" name="hot_water4_number" class="form-control mb-2" id="id_hot_water_number4">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number4">Номер 4 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number4">
+                                <label for="id_cold_water_number4">Номер 4 счетчика холодной воды</label><input required type="number" name="cold_water4_number" class="form-control mb-2" id="id_cold_water_number4">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_hot_water_number5">Номер 5 счетчика горячей воды</label><input type="number" name="hot_water_number" class="form-control mb-2" id="id_hot_water_number5">
+                                <label for="id_hot_water_number5">Номер 5 счетчика горячей воды</label><input required type="number" name="hot_water5_number" class="form-control mb-2" id="id_hot_water_number5">
 
                             </div>
 
                             <div class="form-group">
-                                <label for="id_cold_water_number5">Номер 5 счетчика холодной воды</label><input type="number" name="cold_water_number" class="form-control mb-2" id="id_cold_water_number5">
+                                <label for="id_cold_water_number5">Номер 5 счетчика холодной воды</label><input required type="number" name="cold_water5_number" class="form-control mb-2" id="id_cold_water_number5">
 
                             </div>
 
 
-
+                            <button class="btn btn-success mt-3" type="submit">Отправить</button>
                         </form>
                     </div>
 
-                    <button class="btn btn-success mt-3" type="submit">Отправить</button>
+
                 </form>
             </div>
         </div>
