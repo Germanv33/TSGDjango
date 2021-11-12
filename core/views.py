@@ -21,12 +21,16 @@ def ProfileView(request):
 
     current_user = request.user
 
-    if WaterKeep.objects.get(user=current_user):
+    try:
+        if WaterKeep.objects.filter(user=current_user).exists():
+            water_keeper = WaterKeep.objects.get(user=current_user)
+            s_count = water_keeper.pair_count
+        else:
+            WaterKeep.objects.create(user=current_user)
+    finally:
         water_keeper = WaterKeep.objects.get(user=current_user)
         s_count = water_keeper.pair_count
-    else:
-        s_count = 1
-    
+
     context = {
         "kvartira": current_user.kvartira,
         "name": current_user.last_name,

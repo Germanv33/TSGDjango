@@ -135,5 +135,3 @@ class Letter(models.Model):
     class Meta:
         verbose_name='Письмо от жителя'
         verbose_name_plural='Письма от жителей'
-
-
